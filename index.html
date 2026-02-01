@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 2: The Liar Loop - An argumentative love test">
+    <title>Wait... really?</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Level 2 Specific Styles */
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--color-border);
+            color: var(--color-text-secondary);
+        }
+
+        .modal-btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-text-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon" aria-hidden="true">
+                <!-- Using a "Thinking" sticker for the initial state -->
+                <iframe src="https://tenor.com/embed/10532535631716456360" width="100%" height="100%" frameBorder="0"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="title-block">
+                <h1 class="title">The Final Question</h1>
+                <p class="subtitle">I need to know the truth...</p>
+            </div>
+        </div>
+
+        <div class="playground" id="playground">
+            <p class="question">Do you love me? (Be honest)</p>
+            <div class="button-container">
+                <button class="btn-yes" id="btnYes" aria-label="Answer Yes">Yes! 💖</button>
+                <button class="btn-no" id="btnNo" aria-label="Answer No">No</button>
+            </div>
+        </div>
+
+        <p class="hint">There is only one right answer...</p>
+    </div>
+
+    <!-- Modal Overlay (Reuse existing structure but controlled by JS state machine) -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <!-- Close button hidden for this flow to force interaction -->
+            <button class="modal-close" id="modalClose" style="display: none;">&times;</button>
+
+            <div class="modal-icon" id="modalIcon">
+                <!-- Iframes will be injected here -->
+            </div>
+
+            <h2 class="modal-title" id="modalTitle">...</h2>
+            <p class="modal-message" id="modalMessage">...</p>
+
+            <div class="modal-buttons" id="modalButtons">
+                <button class="modal-button" id="modalActionBtn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Preloader -->
+    <div id="preloadContainer"
+        style="position: absolute; width: 0; height: 0; overflow: hidden; opacity: 0; pointer-events: none;"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
