@@ -7,6 +7,8 @@
 
 Interactive logic puzzle game testing analytical reasoning skills.
 
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)
+
 ## ðŸŒŸ Features
 * Comprehensive implementation tailored for modern standards.
 * Secure and optimized for performance.
