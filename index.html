@@ -3,63 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Level 2: The Liar Loop - An argumentative love test">
+    <meta name="theme-color" content="#fff3f5" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a0a10" media="(prefers-color-scheme: dark)">
     <title>Wait... really?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Level 2 Specific Styles */
-        .modal-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .modal-btn-secondary {
-            background: transparent;
-            border: 2px solid var(--color-border);
-            color: var(--color-text-secondary);
-        }
-
-        .modal-btn-secondary:hover {
-            border-color: var(--color-primary);
-            color: var(--color-text-primary);
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="icon" aria-hidden="true">
-                <!-- Using a "Thinking" sticker for the initial state -->
-                <iframe src="https://tenor.com/embed/10532535631716456360" width="100%" height="100%" frameBorder="0"
-                    allowfullscreen></iframe>
+    <header class="topbar">
+        <span class="brand">the final question</span>
+        <span class="tally" id="tally" aria-live="polite">No has escaped <b id="tallyCount">0</b> times</span>
+    </header>
+
+    <main class="playground" id="playground">
+        <!-- "Thinking" sticker for the initial state -->
+        <figure class="sticker" aria-hidden="true">
+            <div class="sticker-frame">
+                <iframe src="https://tenor.com/embed/10532535631716456360" tabindex="-1" title="Thinking sticker"></iframe>
             </div>
-            <div class="title-block">
-                <h1 class="title">The Final Question</h1>
-                <p class="subtitle">I need to know the truth...</p>
-            </div>
+            <figcaption>I need to know the truth</figcaption>
+        </figure>
+
+        <div class="copy">
+            <h1 class="question" id="question">Do you <em>love</em> me? <span class="aside">Be honest.</span></h1>
+            <p class="hint" id="hint">There is only one right answer...</p>
         </div>
 
-        <div class="playground" id="playground">
-            <p class="question">Do you love me? (Be honest)</p>
-            <div class="button-container">
-                <button class="btn-yes" id="btnYes" aria-label="Answer Yes">Yes! 💖</button>
-                <button class="btn-no" id="btnNo" aria-label="Answer No">No</button>
-            </div>
+        <div class="button-container">
+            <button class="btn-yes" id="btnYes" aria-label="Answer Yes">Yes! 💖</button>
+            <button class="btn-no" id="btnNo" aria-label="Answer No">No</button>
         </div>
+    </main>
 
-        <p class="hint">There is only one right answer...</p>
-    </div>
-
-    <!-- Modal Overlay (Reuse existing structure but controlled by JS state machine) -->
+    <!-- Modal Overlay (controlled by JS state machine, no close button so you have to play along) -->
     <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal">
-            <!-- Close button hidden for this flow to force interaction -->
-            <button class="modal-close" id="modalClose" style="display: none;">&times;</button>
-
             <div class="modal-icon" id="modalIcon">
                 <!-- Iframes will be injected here -->
             </div>
@@ -72,10 +56,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Hidden Preloader -->
-    <div id="preloadContainer"
-        style="position: absolute; width: 0; height: 0; overflow: hidden; opacity: 0; pointer-events: none;"></div>
 
     <script src="script.js"></script>
 </body>
